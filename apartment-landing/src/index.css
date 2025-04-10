@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Noto Sans KR', 'Roboto', sans-serif;
+    color: #333;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .heading-primary {
+    @apply text-4xl md:text-5xl font-bold text-gray-900;
+  }
+  
+  .heading-secondary {
+    @apply text-3xl md:text-4xl font-semibold text-gray-800;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-[#D4AF37] text-white font-medium rounded-md shadow-md hover:bg-[#996515] transition-colors duration-300;
+  }
+}
