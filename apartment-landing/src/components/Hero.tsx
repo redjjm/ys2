@@ -8,7 +8,8 @@ const Hero: React.FC = () => {
     require('../image/perspective/pers-3.png'),
     require('../image/perspective/pers-4.png'),
     require('../image/perspective/pers-5.png'),
-    require('../image/perspective/pers-6.png')
+    require('../image/perspective/pers-6.png'),
+    require('../image/perspective/pers-7.png')
   ];
   const cafeIcon = require('../image/button/naver-cafe-icon.png');
   const kakaochatIcon = require('../image/button/kakaotalk-icon.png');
@@ -38,12 +39,12 @@ const Hero: React.FC = () => {
           alt={`Perspective ${currentImageIndex + 1}`}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-40"></div>
+        {/* <div className="absolute inset-0 bg-black opacity-10"></div> */}
       </div>
       
       {/* 콘텐츠 */}
-      <div className="absolute top-10 right-10 z-10 text-white text-right">
-        <h1 className="heading-primary text-4xl md:text-6xl font-bold tracking-tight whitespace-nowrap transform scale-x-90 origin-right">
+      <div className="absolute top-10 left-0 right-0 z-10 text-white text-center">
+        <h1 className="heading-primary text-4xl md:text-6xl font-bold tracking-tight whitespace-nowrap transform scale-x-90 origin-center" style={{ textShadow: '0 0 2px #fff, 0 0 2px #fff' }}>
           역삼2동, 더 나은 삶으로
         </h1>
       </div>

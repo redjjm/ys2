@@ -38,7 +38,7 @@ const Location: React.FC = () => {
         console.log("지도 초기화 시작...");
         
         // 역삼2동 780번지 좌표
-        const yeoksam2DongCoords = new window.kakao.maps.LatLng(37.497750, 127.036086);
+        const yeoksam2DongCoords = new window.kakao.maps.LatLng(37.495235, 127.043016);
         
         const options = {
           center: yeoksam2DongCoords, // 역삼2동 780번지 중심 좌표
@@ -55,7 +55,7 @@ const Location: React.FC = () => {
         
         // 인포윈도우 추가
         const infowindow = new window.kakao.maps.InfoWindow({
-          content: '<div style="padding:5px;font-size:12px;width:150px;text-align:center;">역삼2동 780번지</div>'
+          content: '<div style="padding:5px;font-size:12px;width:150px;text-align:center;">역삼2동 780번지 일대</div>'
         });
         infowindow.open(map, marker);
         
@@ -76,10 +76,11 @@ const Location: React.FC = () => {
   return (
     <section id="location" className="section bg-beige-light">
       <div className="container-custom">
-        <h2 className="heading-secondary mb-8">위치 안내</h2>
+        <h2 className="heading-secondary mb-8">위치</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="text-left">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"></div> */}
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-10 items-center">
+          {/* <div className="text-center">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold mb-4 text-gold-DEFAULT">프리미엄 입지 조건</h3>
               
@@ -115,24 +116,8 @@ const Location: React.FC = () => {
                   <span>한강 공원 도보 15분</span>
                 </li>
               </ul>
-              
-              {/* <div className="mt-6 text-sm text-gray-600">
-                <p className="font-semibold">주소:</p>
-                <p>서울특별시 강남구 테헤란로 123</p>
-              </div> */}
-
-              {/* <div className="mt-6">
-                <a 
-                  href="https://cafe.naver.com/ys2moa" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gold-DEFAULT hover:bg-gold-dark transition-colors duration-200"
-                >
-                  카페 입장하기
-                </a>
-              </div> */}
             </div>
-          </div>
+          </div> */}
           
           {/* 지도 영역 */}
           <div className="overflow-hidden rounded-lg shadow-md h-80 md:h-96">
