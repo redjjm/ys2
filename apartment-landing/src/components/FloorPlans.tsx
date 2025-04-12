@@ -70,16 +70,12 @@ const FloorPlans: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
               <div className="aspect-w-16 aspect-h-9 w-full">
-                <img 
-                  src={selectedPlan.image} 
-                  alt={`${selectedPlan.type} 타입 평면도`} 
-                  className="w-full h-full object-contain p-4"
-                />
+                <img  src={selectedPlan.image}  alt={`${selectedPlan.type} 타입 평면도`}  className="w-auto h-auto object-contain p-2 max-h-[500px]"/>
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-gold-DEFAULT">{selectedPlan.type} 타입</h3>
-                <p className="text-gray-600 mb-2">전용 면적: {selectedPlan.size}</p>
-                <p className="text-gray-700">{selectedPlan.description}</p>
+                {/* <h3 className="text-2xl font-bold text-gold-DEFAULT">{selectedPlan.type} 타입</h3>
+                <p className="text-gray-600 mb-2">전용 면적: {selectedPlan.size}</p> */}
+                {/* <p className="text-gray-700">{selectedPlan.description}</p> */}
               </div>
             </div>
           </div>

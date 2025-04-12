@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Hero: React.FC = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(3);
   const images = [
     require('../image/perspective/pers-1.jpg'),
     require('../image/perspective/pers-2.jpg'),
