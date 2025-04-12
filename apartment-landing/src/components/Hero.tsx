@@ -7,7 +7,21 @@ const Hero: React.FC = () => {
     return savedState !== null ? savedState === 'true' : true;
   };
   
+  // 애니메이션 스타일 정의
+  const fadeInStyle = {
+    animation: 'fadeIn 1s forwards',
+  };
+
+  const fadeInKeyframes = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  `;
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(3);
+  const [nextImageIndex, setNextImageIndex] = useState(3);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMusicPlaying, setIsMusicPlaying] = useState(getSavedMusicState);
   const [userInteracted, setUserInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -113,23 +127,36 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+      // 다음 이미지 인덱스 설정
+      setNextImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      // 트랜지션 시작
+      setIsTransitioning(true);
+      
+      // 트랜지션 완료 후 현재 이미지 업데이트
+      const transitionTimeout = setTimeout(() => {
+        setCurrentImageIndex((nextImageIndex + 1) % images.length);
+        setIsTransitioning(false);
+      }, 1000); // 페이드 효과 시간과, 위 timeout 시간이 일치해야 함
+      
+      return () => clearTimeout(transitionTimeout);
+    }, 4000);
 
     return () => clearInterval(intervalId);
-  }, [images.length]);
+  }, [images.length, nextImageIndex]);
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* 배경음 */}
       <audio ref={audioRef} loop>
-        {/* 오디오 파일이 준비되면 아래 주석을 해제하세요 */}
         <source src={require("../sound/bg-1.mp3")} type="audio/mp3" />
         브라우저가 오디오를 지원하지 않습니다.
       </audio>
       
+      {/* 스타일 정의 */}
+      <style>{fadeInKeyframes}</style>
+      
       {/* 음악 제어 버튼 */}
-      <div className="absolute top-5 right-5 z-20 cursor-pointer" onClick={toggleMusic}>
+      {/* <div className="absolute top-5 right-5 z-20 cursor-pointer" onClick={toggleMusic}>
         {isMusicPlaying ? (
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white bg-black bg-opacity-40 rounded-full p-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17V5l12-2v12" />
@@ -148,15 +175,23 @@ const Hero: React.FC = () => {
             <line x1="3" y1="3" x2="21" y2="21" strokeWidth={1.5} strokeLinecap="round" />
           </svg>
         )}
-      </div>
+      </div> */}
       
       {/* 이미지 컨테이너 */}
       <div className="absolute inset-0">
         <img
           src={images[currentImageIndex]}
           alt={`Perspective ${currentImageIndex + 1}`}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
         />
+        {isTransitioning && (
+          <img
+            src={images[nextImageIndex]}
+            alt={`Perspective ${nextImageIndex + 1}`}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={fadeInStyle}
+          />
+        )}
         {/* <div className="absolute inset-0 bg-black opacity-10"></div> */}
       </div>
       
