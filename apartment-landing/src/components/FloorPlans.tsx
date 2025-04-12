@@ -53,12 +53,13 @@ const FloorPlans: React.FC = () => {
                     onClick={() => setSelectedPlan(plan)}
                     className={`w-full p-3 text-left rounded-md transition-colors duration-200 ${
                       selectedPlan.id === plan.id 
-                        ? 'bg-gold-DEFAULT text-white' 
-                        : 'bg-white hover:bg-gold-light'
+                        ? 'bg-gold-DEFAULT text-white font-bold shadow-md border-2 border-gold-dark' 
+                        : 'bg-white hover:bg-gold-light border border-gray-200'
                     }`}
                   >
-                    <div className="font-semibold">{plan.type} 타입</div>
-                    <div className="text-sm">{plan.size}</div>
+                    <div className={`font-semibold ${'text-gray-800'}`}>{plan.type} 타입</div>
+                    <div className={`text-sm ${'text-gray-600'}`}>{plan.size}</div>
+                    {/* <div className={`text-sm ${selectedPlan.id === plan.id ? 'text-white' : 'text-gray-600'}`}>{plan.size}</div> */}
                   </button>
                 ))}
               </div>
