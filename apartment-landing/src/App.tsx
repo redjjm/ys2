@@ -14,7 +14,7 @@ function App() {
       <Hero />
       {/* <Introduction /> */}
       {/* <Benefits /> */}
-      <Location />
+      {/* <Location /> */}
       {/* <FloorPlans /> */}
       {/* <Contact /> */}
       <Footer />

@@ -51,7 +51,7 @@ const Location: React.FC = () => {
                   <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  <span>분당선 한티역 도보 10분</span>
+                  <span>지하철 분당선 서울숲역 도보 10분</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,14 +63,31 @@ const Location: React.FC = () => {
                   <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  <span>도곡공원 5분</span>
+                  <span>명문 초/중/고등학교 학군</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>한강 공원 도보 15분</span>
                 </li>
               </ul>
-{/*               
+              
               <div className="mt-6 text-sm text-gray-600">
                 <p className="font-semibold">주소:</p>
-                <p>서울특별시 강남구 역삼2동</p>
-              </div> */}
+                <p>서울특별시 강남구 테헤란로 123</p>
+              </div>
+
+              <div className="mt-6">
+                <a 
+                  href="https://cafe.naver.com/ys2moa" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gold-DEFAULT hover:bg-gold-dark transition-colors duration-200"
+                >
+                  카페 입장하기
+                </a>
+              </div>
             </div>
           </div>
           

@@ -13,6 +13,13 @@ const Hero: React.FC = () => {
   const cafeIcon = require('../image/button/naver-cafe-icon.png');
   const kakaochatIcon = require('../image/button/kakaotalk-icon.png');
   
+  const handleCafeClick = () => {
+    window.open('https://cafe.naver.com/ys2moa', '_blank');
+  };
+
+  const handleChatClick = () => {
+    window.open('https://open.kakao.com/o/gBCOJPof', '_blank');
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -43,11 +50,17 @@ const Hero: React.FC = () => {
       
       {/* 이동버튼 */}
       <div className="absolute bottom-10 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 landscape:right-10 z-10 flex flex-row gap-4">
-        <button className="btn-primary-cafe text-lg flex items-center justify-center whitespace-nowrap px-6">
+        <button 
+          onClick={handleCafeClick}
+          className="btn-primary-cafe text-lg flex items-center justify-center whitespace-nowrap px-6"
+        >
           <img src={cafeIcon} alt="공식 카페 아이콘" className="w-6 h-6 mr-2" />
           <span>카페 입장</span>
         </button>
-        <button className="btn-primary-chat text-lg flex items-center justify-center whitespace-nowrap px-6">
+        <button 
+          onClick={handleChatClick}
+          className="btn-primary-chat text-lg flex items-center justify-center whitespace-nowrap px-6"
+        >
           <img src={kakaochatIcon} alt="오픈 채팅 아이콘" className="w-6 h-6 mr-2" />
           <span>채팅 입장</span>
         </button>
