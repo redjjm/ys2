@@ -42,7 +42,7 @@ const Location: React.FC = () => {
         
         const options = {
           center: yeoksam2DongCoords, // 역삼2동 780번지 중심 좌표
-          level: 2  // 조금 더 확대해서 보여줌
+          level: 4  // 조금 더 확대해서 보여줌
         };
         
         const map = new window.kakao.maps.Map(mapRef.current, options);
