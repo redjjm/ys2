@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 const Hero: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
-    require('../image/perspective/pers-1.png'),
-    require('../image/perspective/pers-2.png'),
-    require('../image/perspective/pers-3.png'),
-    require('../image/perspective/pers-4.png'),
-    require('../image/perspective/pers-5.png'),
-    require('../image/perspective/pers-6.png'),
-    require('../image/perspective/pers-7.png')
+    require('../image/perspective/pers-1.jpg'),
+    require('../image/perspective/pers-2.jpg'),
+    require('../image/perspective/pers-3.jpg'),
+    require('../image/perspective/pers-4.jpg'),
+    require('../image/perspective/pers-5.jpg'),
+    require('../image/perspective/pers-6.jpg'),
+    require('../image/perspective/pers-7.jpg')
   ];
   const cafeIcon = require('../image/button/naver-cafe-icon.png');
   const kakaochatIcon = require('../image/button/kakaotalk-icon.png');
