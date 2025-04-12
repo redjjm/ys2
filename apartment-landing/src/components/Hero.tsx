@@ -44,8 +44,8 @@ const Hero: React.FC = () => {
       
       {/* 콘텐츠 */}
       <div className="absolute top-10 left-0 right-0 z-10 text-white text-center">
-        <h1 className="heading-primary text-4xl md:text-6xl font-bold tracking-tight whitespace-nowrap transform scale-x-90 origin-center" style={{ textShadow: '0 0 2px #fff, 0 0 2px #fff' }}>
-          역삼2동, 더 나은 삶으로
+        <h1 className="heading-primary text-4xl md:text-6xl tracking-tight whitespace-nowrap transform scale-x-90 origin-center" style={{ fontFamily: "'Do Hyeon', sans-serif", textShadow: '0 0 8px #fff, 0 0 8px #fff, 0 0 4px #fff' }}>
+          역삼 2동, 더 나은 삶으로
         </h1>
       </div>
       

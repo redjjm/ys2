@@ -8,8 +8,11 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">인사말</h3>
             <p className="text-gray-400 mb-4">
-            우리가 뿌리내린 역삼 2동, 더 나은 주거 환경을 여러분과 함께 만들어가겠습니다.
-소유자 자원봉사팀 추진위 일동
+            우리가 뿌리내린 역삼 2동, 더 나은 주거 환경을 여러분과 함께 만들어가겠습니다.<br></br>
+            - 소유자 자원봉사팀 추진위 일동 -
+            </p>
+            <p className="text-gray-400 mb-4">
+            
             </p>
           </div>
           
