@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="pt-8 mt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-          <p>강남구 역삼2동 재개발 추진준비위원회</p>
+          <p>강남구 역삼2동 재개발 추진 준비 위원회</p>
           {/* <p>&copy; 2025 프리미엄 아파트 재개발 프로젝트</p> */}
           {/* <p className="mt-2">
             <a href="#" className="hover:text-white transition-colors">개인정보처리방침</a> | 
