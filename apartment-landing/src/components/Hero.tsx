@@ -57,14 +57,14 @@ const Hero: React.FC = () => {
       </div>
       
       {/* 스크롤 다운 화살표 */}
-      <div className="absolute bottom-10 left-10 z-10 animate-bounce cursor-pointer" onClick={handleScrollDown}>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+      <div className="absolute bottom-2 z-10 animate-bounce cursor-pointer" onClick={handleScrollDown}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
       
       {/* 이동버튼 */}
-      <div className="absolute bottom-10 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 landscape:right-10 z-10 flex flex-row gap-4">
+      <div className="absolute bottom-16 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 landscape:right-10 z-10 flex flex-row gap-4">
         <button 
           onClick={handleCafeClick}
           className="btn-primary-cafe text-lg flex items-center justify-center whitespace-nowrap px-6"
