@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+// 이미지 파일 import
+import size24 from '../image/size/size-24.jpg';
+import size30 from '../image/size/size-30.jpg';
+import size34 from '../image/size/size-34.jpg';
+import size39 from '../image/size/size-39.jpg';
 
 const FloorPlans: React.FC = () => {
   // 평면도 데이터
@@ -7,28 +12,28 @@ const FloorPlans: React.FC = () => {
       id: 1,
       type: '24평형 / 실사용 32평',
       size: '59㎡',
-      image: require('../image/size/size-24.jpg'),
+      image: size24,
       description: '실속적인 LDK와 고품격 파우더룸을 가진 맞춤형 공간'
     },
     {
       id: 2,
       type: '30평형 / 실사용 41평',
       size: '74㎡',
-      image: require('../image/size/size-30.jpg'),
+      image: size30,
       description: '수납공간을 극대화한 생활 맞춤형 공간'
     },
     {
       id: 3,
       type: '34평형 / 실사용 44평',
       size: '84㎡',
-      image: require('../image/size/size-34.jpg'),
+      image: size34,
       description: '안방 전용 서재와 순환형 동선의 프리미엄 공간'
     },
     {
       id: 4,
       type: '39평형 /실사용 51평',
       size: '99㎡',
-      image: require('../image/size/size-39.jpg'),
+      image: size39,
       description: ' 품격과 여유로움이 있는 최고의 주거가치'
     }
   ];

@@ -21,10 +21,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && npm run move-build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build && npm run move-build",
     "move-build": "xcopy /E /I /Y build ..\\docs && rmdir /S /Q build",
-    "test": "react-scripts test",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,7 +48,10 @@
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "autoprefixer": "^10.4.21",
+    "customize-cra": "^1.0.0",
+    "file-loader": "^6.2.0",
     "postcss": "^8.5.3",
+    "react-app-rewired": "^2.2.1",
     "tailwindcss": "^3.4.0"
   }
 }
