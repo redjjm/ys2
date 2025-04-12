@@ -14,10 +14,11 @@ function App() {
       <Hero />
       {/* <Introduction /> */}
       {/* <Benefits /> */}
-      <Location />
+      
       {/* <FloorPlans /> */}
       {/* <Contact /> */}
       <Footer />
+      <Location />
     </div>
   );
 }

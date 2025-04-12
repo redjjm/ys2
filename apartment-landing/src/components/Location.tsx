@@ -76,7 +76,8 @@ const Location: React.FC = () => {
   return (
     <section id="location" className="section bg-beige-light">
       <div className="container-custom">
-        <h2 className="heading-secondary mb-8">위치</h2>
+        <h2 className="heading-secondary mb-8">상세 번지</h2>
+        <h3 className="text-lg font-semibold mb-4">774, 775, 777, 778, 780, 781, 782, 783</h3>
         
         {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"></div> */}
         <div className="grid grid-cols-1 md:grid-cols-1 gap-10 items-center">
