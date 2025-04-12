@@ -21,6 +21,13 @@ const Hero: React.FC = () => {
   const handleChatClick = () => {
     window.open('https://open.kakao.com/o/gBCOJPof', '_blank');
   };
+  
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -47,6 +54,13 @@ const Hero: React.FC = () => {
         <h1 className="heading-primary text-4xl md:text-6xl tracking-tight whitespace-nowrap transform scale-x-90 origin-center" style={{ fontFamily: "'Do Hyeon', sans-serif", textShadow: '0 0 8px #fff, 0 0 8px #fff, 0 0 4px #fff' }}>
           역삼 2동, 더 나은 삶으로
         </h1>
+      </div>
+      
+      {/* 스크롤 다운 화살표 */}
+      <div className="absolute bottom-10 left-10 z-10 animate-bounce cursor-pointer" onClick={handleScrollDown}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
       </div>
       
       {/* 이동버튼 */}
