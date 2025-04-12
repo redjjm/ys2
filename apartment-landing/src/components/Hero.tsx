@@ -1,37 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Hero: React.FC = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [
+    require('../image/perspective/pers-1.png'),
+    require('../image/perspective/pers-2.png'),
+    require('../image/perspective/pers-3.png'),
+    require('../image/perspective/pers-4.png'),
+    require('../image/perspective/pers-5.png'),
+    require('../image/perspective/pers-6.png')
+  ];
+  const cafeIcon = require('../image/button/naver-cafe-icon.png');
+  const kakaochatIcon = require('../image/button/kakaotalk-icon.png');
+  
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [images.length]);
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* 배경 이미지 */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0" 
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
-          backgroundSize: 'cover'
-        }}
-      >
+      {/* 이미지 컨테이너 */}
+      <div className="absolute inset-0">
+        <img
+          src={images[currentImageIndex]}
+          alt={`Perspective ${currentImageIndex + 1}`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
       
       {/* 콘텐츠 */}
-      <div className="container-custom relative z-10 text-white text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="heading-primary text-4xl md:text-6xl font-bold mb-4 tracking-tight">
-          프리미엄 라이프스타일을 향한 새로운 시작
+      <div className="absolute top-10 right-10 z-10 text-white text-right">
+        <h1 className="heading-primary text-4xl md:text-6xl font-bold tracking-tight whitespace-nowrap transform scale-x-90 origin-right">
+          역삼2동, 더 나은 삶으로
         </h1>
-        <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-          도심 속 휴식 공간, 럭셔리한 디자인과 최상의 편의시설을 갖춘 프리미엄 아파트 리모델링 프로젝트
-        </p>
-        <button className="btn-primary text-lg">
-          지금 상담하기
-        </button>
       </div>
       
-      {/* 스크롤 다운 표시 */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-        <svg className="w-8 h-8 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
+      {/* 이동버튼 */}
+      <div className="absolute bottom-10 portrait:left-1/2 portrait:transform portrait:-translate-x-1/2 landscape:right-10 z-10 flex flex-row gap-4">
+        <button className="btn-primary-cafe text-lg flex items-center justify-center whitespace-nowrap px-6">
+          <img src={cafeIcon} alt="공식 카페 아이콘" className="w-6 h-6 mr-2" />
+          <span>카페 입장</span>
+        </button>
+        <button className="btn-primary-chat text-lg flex items-center justify-center whitespace-nowrap px-6">
+          <img src={kakaochatIcon} alt="오픈 채팅 아이콘" className="w-6 h-6 mr-2" />
+          <span>채팅 입장</span>
+        </button>
       </div>
     </section>
   );

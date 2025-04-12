@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 const Location: React.FC = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_MAP_API_KEY}&autoload=false`;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        const container = document.getElementById('map');
+        const options = {
+          center: new window.kakao.maps.LatLng(37.5013, 127.0397),
+          level: 3
+        };
+        const map = new window.kakao.maps.Map(container, options);
+        
+        // 마커 생성
+        const marker = new window.kakao.maps.Marker({
+          position: new window.kakao.maps.LatLng(37.5013, 127.0397)
+        });
+        marker.setMap(map);
+      });
+    };
+  }, []);
+
   return (
     <section id="location" className="section bg-beige-light">
       <div className="container-custom">
@@ -22,7 +51,7 @@ const Location: React.FC = () => {
                   <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  <span>분당선 서울숲역 도보 10분</span>
+                  <span>분당선 한티역 도보 10분</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,36 +63,20 @@ const Location: React.FC = () => {
                   <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
-                  <span>명문 초/중/고등학교 학군</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-gold-DEFAULT mr-2 flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <span>한강 공원 도보 15분</span>
+                  <span>도곡공원 5분</span>
                 </li>
               </ul>
-              
+{/*               
               <div className="mt-6 text-sm text-gray-600">
                 <p className="font-semibold">주소:</p>
-                <p>서울특별시 강남구 테헤란로 123</p>
-              </div>
+                <p>서울특별시 강남구 역삼2동</p>
+              </div> */}
             </div>
           </div>
           
           {/* 지도 영역 */}
           <div className="overflow-hidden rounded-lg shadow-md bg-gray-300 h-80 md:h-96">
-            {/* 실제 구현 시 지도 API 연동 */}
-            <div className="flex items-center justify-center h-full bg-gray-200">
-              <div className="text-center">
-                <svg className="w-16 h-16 mx-auto text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <p className="mt-2 text-gray-600">지도가 여기에 표시됩니다.</p>
-                <p className="text-sm text-gray-500">(실제 구현 시 카카오맵, 네이버맵 또는 Google Maps API 연동)</p>
-              </div>
-            </div>
+            <div id="map" className="w-full h-full"></div>
           </div>
         </div>
       </div>

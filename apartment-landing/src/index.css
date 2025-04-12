@@ -30,7 +30,15 @@
     @apply text-3xl md:text-4xl font-semibold text-gray-800;
   }
   
+  .btn-primary-cafe {
+    @apply px-6 py-3 bg-[#03C75A] text-white font-medium rounded-md shadow-md hover:bg-[#03C75A] transition-colors duration-300;
+  }
+
+  .btn-primary-chat{
+    @apply px-6 py-3 bg-[#F7D400] text-white font-medium rounded-md shadow-md hover:bg-[#03C75A] transition-colors duration-300;
+  }
+
   .btn-primary {
-    @apply px-6 py-3 bg-[#D4AF37] text-white font-medium rounded-md shadow-md hover:bg-[#996515] transition-colors duration-300;
+    @apply px-6 py-3 bg-[#03C75A] text-white font-medium rounded-md shadow-md hover:bg-[#03C75A] transition-colors duration-300;
   }
 }
