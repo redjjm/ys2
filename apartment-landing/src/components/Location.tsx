@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 declare global {
   interface Window {
@@ -7,26 +7,60 @@ declare global {
 }
 
 const Location: React.FC = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_MAP_API_KEY}&autoload=false`;
-    document.head.appendChild(script);
+  const mapRef = useRef<HTMLDivElement>(null);
 
-    script.onload = () => {
-      window.kakao.maps.load(() => {
-        const container = document.getElementById('map');
+  useEffect(() => {
+    console.log("Location component mounted");
+    console.log("window.kakao exists?", !!window.kakao);
+    
+    // 지도 API 로드 확인을 위한 타임아웃
+    const checkKakaoMap = () => {
+      console.log("Checking Kakao Map API...");
+      console.log("window.kakao exists?", !!window.kakao);
+      
+      if (window.kakao && window.kakao.maps) {
+        console.log("카카오 맵 API가 로드되었습니다.");
+        initMap();
+      } else {
+        console.log("카카오 맵 API가 아직 로드되지 않았습니다. 다시 시도합니다.");
+        setTimeout(checkKakaoMap, 500);
+      }
+    };
+    
+    // 맵 초기화 함수
+    const initMap = () => {
+      if (!mapRef.current) {
+        console.error("맵 컨테이너 요소를 찾을 수 없습니다.");
+        return;
+      }
+      
+      try {
+        console.log("지도 초기화 시작...");
         const options = {
           center: new window.kakao.maps.LatLng(37.5013, 127.0397),
           level: 3
         };
-        const map = new window.kakao.maps.Map(container, options);
+        
+        const map = new window.kakao.maps.Map(mapRef.current, options);
         
         // 마커 생성
+        const markerPosition = new window.kakao.maps.LatLng(37.5013, 127.0397);
         const marker = new window.kakao.maps.Marker({
-          position: new window.kakao.maps.LatLng(37.5013, 127.0397)
+          position: markerPosition
         });
         marker.setMap(map);
-      });
+        
+        console.log("지도를 성공적으로 생성했습니다.");
+      } catch (error) {
+        console.error("지도 생성 중 오류 발생:", error);
+      }
+    };
+    
+    // 1초 후 카카오맵 API 체크 시작
+    setTimeout(checkKakaoMap, 1000);
+    
+    return () => {
+      console.log("Location component unmounted");
     };
   }, []);
 
@@ -73,12 +107,12 @@ const Location: React.FC = () => {
                 </li>
               </ul>
               
-              <div className="mt-6 text-sm text-gray-600">
+              {/* <div className="mt-6 text-sm text-gray-600">
                 <p className="font-semibold">주소:</p>
                 <p>서울특별시 강남구 테헤란로 123</p>
-              </div>
+              </div> */}
 
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <a 
                   href="https://cafe.naver.com/ys2moa" 
                   target="_blank" 
@@ -87,13 +121,18 @@ const Location: React.FC = () => {
                 >
                   카페 입장하기
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
           
           {/* 지도 영역 */}
-          <div className="overflow-hidden rounded-lg shadow-md bg-gray-300 h-80 md:h-96">
-            <div id="map" className="w-full h-full"></div>
+          <div className="overflow-hidden rounded-lg shadow-md h-80 md:h-96">
+            <div 
+              id="kakao-map"
+              ref={mapRef} 
+              className="w-full h-full" 
+              style={{backgroundColor: "#f0f0f0"}}
+            ></div>
           </div>
         </div>
       </div>

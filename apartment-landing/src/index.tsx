@@ -4,6 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// 카카오맵 초기화를 위한 타입 선언
+declare global {
+  interface Window {
+    Kakao: any;
+    kakao: any;
+  }
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
