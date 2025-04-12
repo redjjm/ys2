@@ -36,19 +36,28 @@ const Location: React.FC = () => {
       
       try {
         console.log("지도 초기화 시작...");
+        
+        // 역삼2동 780번지 좌표
+        const yeoksam2DongCoords = new window.kakao.maps.LatLng(37.497750, 127.036086);
+        
         const options = {
-          center: new window.kakao.maps.LatLng(37.5013, 127.0397),
-          level: 3
+          center: yeoksam2DongCoords, // 역삼2동 780번지 중심 좌표
+          level: 3  // 조금 더 확대해서 보여줌
         };
         
         const map = new window.kakao.maps.Map(mapRef.current, options);
         
         // 마커 생성
-        const markerPosition = new window.kakao.maps.LatLng(37.5013, 127.0397);
         const marker = new window.kakao.maps.Marker({
-          position: markerPosition
+          position: yeoksam2DongCoords,
+          map: map
         });
-        marker.setMap(map);
+        
+        // 인포윈도우 추가
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: '<div style="padding:5px;font-size:12px;width:150px;text-align:center;">역삼2동 780번지</div>'
+        });
+        infowindow.open(map, marker);
         
         console.log("지도를 성공적으로 생성했습니다.");
       } catch (error) {
